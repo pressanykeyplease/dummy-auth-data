@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -10,6 +9,14 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     try {
+      const { 
+        Platform = 'Unknown',
+        Error = '',
+        Notes = '',
+        Other = '',
+        ...otherData
+      } = req.body;
+
       const response = await fetch(`https://api.airtable.com/v0/app3fvC3WsJhNaSYg/Auth-errors`, {
         method: 'POST',
         headers: {
@@ -20,10 +27,12 @@ export default async function handler(req, res) {
           records: [
             {
               fields: {
-                'Data': 'Data body =)',//JSON.stringify(req.body),
-                'Timestamp': new Date().toISOString()//,
-                // Add specific fields if you want them as separate columns
-                //...req.body
+                'Platform': Platform,
+                'Error': Error,
+                'Notes': Notes,
+                'Other': Other,
+                'Timestamp': new Date().toISOString(),
+                'FullData': JSON.stringify(otherData)
               }
             }
           ]
@@ -49,6 +58,6 @@ export default async function handler(req, res) {
       });
     }
   } else {
-    res.status(405).json({ error: 'Method not allowed 4' });
+    res.status(405).json({ error: 'Method not allowed. Version: 5' });
   }
 }
