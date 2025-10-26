@@ -10,7 +10,7 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     try {
-      const response = await fetch(`https://api.airtable.com/v0/app3fvC3WsJhNaSYg/Submissions`, {
+      const response = await fetch(`https://api.airtable.com/v0/app3fvC3WsJhNaSYg/Auth-errors`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer patMjwBLL75xtsCLm.101eaea4829b98a1362a00cf92d6bc715c7a5801a826178f79569425205a7008`,
@@ -49,6 +49,6 @@ export default async function handler(req, res) {
       });
     }
   } else {
-    res.status(405).json({ error: 'Method not allowed 3' });
+    res.status(405).json({ error: 'Method not allowed 4' });
   }
 }
