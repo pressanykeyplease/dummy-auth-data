@@ -28,7 +28,7 @@ export default async function handler(req, res) {
             {
               fields: {
                 'Platform': Platform,
-                'Error': Error,
+                'Error-info': Error,
                 'Notes': Notes,
                 'Other': Other,
                 'Timestamp': new Date().toISOString(),
