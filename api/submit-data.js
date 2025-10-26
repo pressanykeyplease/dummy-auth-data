@@ -21,9 +21,9 @@ export default async function handler(req, res) {
             {
               fields: {
                 'Data': 'Data body =)',//JSON.stringify(req.body),
-                'Timestamp': new Date().toISOString(),
+                'Timestamp': new Date().toISOString()//,
                 // Add specific fields if you want them as separate columns
-                ...req.body
+                //...req.body
               }
             }
           ]
