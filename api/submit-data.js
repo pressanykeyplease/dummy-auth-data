@@ -20,7 +20,7 @@ export default async function handler(req, res) {
           records: [
             {
               fields: {
-                'Data': JSON.stringify(req.body),
+                'Data': 'Data body =)',//JSON.stringify(req.body),
                 'Timestamp': new Date().toISOString(),
                 // Add specific fields if you want them as separate columns
                 ...req.body
@@ -49,6 +49,6 @@ export default async function handler(req, res) {
       });
     }
   } else {
-    res.status(405).json({ error: 'Method not allowed 2' });
+    res.status(405).json({ error: 'Method not allowed 3' });
   }
 }
