@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     try {
       const { 
         Platform = 'Unknown',
-        Error = '',
+        Error_info = '',
         Notes = '',
         Other = '',
         ...otherData
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
             {
               fields: {
                 'Platform': Platform,
-                'Error-info': Error,
+                'Error_info': Error_info,
                 'Notes': Notes,
                 'Other': Other,
                 'Timestamp': new Date().toISOString(),
@@ -58,6 +58,6 @@ export default async function handler(req, res) {
       });
     }
   } else {
-    res.status(405).json({ error: 'Method not allowed. Version: 5' });
+    res.status(405).json({ error: 'Method not allowed. Version: 6' });
   }
 }
